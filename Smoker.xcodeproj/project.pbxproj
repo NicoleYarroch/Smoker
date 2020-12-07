@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		88705177257E754400C3A5DE /* SmokerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705176257E754400C3A5DE /* SmokerApp.swift */; };
+		88705179257E754400C3A5DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705178257E754400C3A5DE /* ContentView.swift */; };
+		8870517B257E754500C3A5DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8870517A257E754500C3A5DE /* Assets.xcassets */; };
+		8870517E257E754500C3A5DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8870517D257E754500C3A5DE /* Preview Assets.xcassets */; };
+		88705189257E754600C3A5DE /* SmokerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705188257E754600C3A5DE /* SmokerTests.swift */; };
+		88705194257E754600C3A5DE /* SmokerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705193257E754600C3A5DE /* SmokerUITests.swift */; };
+		887051A7257E76BF00C3A5DE /* TestStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051A6257E76BF00C3A5DE /* TestStates.swift */; };
+		887051AF257E76FA00C3A5DE /* SelectableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051AE257E76FA00C3A5DE /* SelectableRow.swift */; };
+		887051B7257E7A0300C3A5DE /* MultipleSelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051B6257E7A0300C3A5DE /* MultipleSelectionRow.swift */; };
+		887051BF257E7B2300C3A5DE /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051BE257E7B2300C3A5DE /* TestView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		88705185257E754600C3A5DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8870516B257E754300C3A5DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88705172257E754400C3A5DE;
+			remoteInfo = Smoker;
+		};
+		88705190257E754600C3A5DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8870516B257E754300C3A5DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88705172257E754400C3A5DE;
+			remoteInfo = Smoker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		88705173257E754400C3A5DE /* Smoker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smoker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		88705176257E754400C3A5DE /* SmokerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokerApp.swift; sourceTree = "<group>"; };
+		88705178257E754400C3A5DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8870517A257E754500C3A5DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8870517D257E754500C3A5DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8870517F257E754500C3A5DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88705184257E754600C3A5DE /* SmokerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmokerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		88705188257E754600C3A5DE /* SmokerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokerTests.swift; sourceTree = "<group>"; };
+		8870518A257E754600C3A5DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8870518F257E754600C3A5DE /* SmokerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmokerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		88705193257E754600C3A5DE /* SmokerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokerUITests.swift; sourceTree = "<group>"; };
+		88705195257E754600C3A5DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		887051A6257E76BF00C3A5DE /* TestStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStates.swift; sourceTree = "<group>"; };
+		887051AE257E76FA00C3A5DE /* SelectableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableRow.swift; sourceTree = "<group>"; };
+		887051B6257E7A0300C3A5DE /* MultipleSelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionRow.swift; sourceTree = "<group>"; };
+		887051BE257E7B2300C3A5DE /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		88705170257E754400C3A5DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88705181257E754600C3A5DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8870518C257E754600C3A5DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8870516A257E754300C3A5DE = {
+			isa = PBXGroup;
+			children = (
+				88705175257E754400C3A5DE /* Smoker */,
+				88705187257E754600C3A5DE /* SmokerTests */,
+				88705192257E754600C3A5DE /* SmokerUITests */,
+				88705174257E754400C3A5DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		88705174257E754400C3A5DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88705173257E754400C3A5DE /* Smoker.app */,
+				88705184257E754600C3A5DE /* SmokerTests.xctest */,
+				8870518F257E754600C3A5DE /* SmokerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		88705175257E754400C3A5DE /* Smoker */ = {
+			isa = PBXGroup;
+			children = (
+				887051A5257E769400C3A5DE /* UI */,
+				887051A4257E768D00C3A5DE /* Data */,
+				88705176257E754400C3A5DE /* SmokerApp.swift */,
+				88705178257E754400C3A5DE /* ContentView.swift */,
+				8870517A257E754500C3A5DE /* Assets.xcassets */,
+				8870517F257E754500C3A5DE /* Info.plist */,
+				8870517C257E754500C3A5DE /* Preview Content */,
+			);
+			path = Smoker;
+			sourceTree = "<group>";
+		};
+		8870517C257E754500C3A5DE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8870517D257E754500C3A5DE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		88705187257E754600C3A5DE /* SmokerTests */ = {
+			isa = PBXGroup;
+			children = (
+				88705188257E754600C3A5DE /* SmokerTests.swift */,
+				8870518A257E754600C3A5DE /* Info.plist */,
+			);
+			path = SmokerTests;
+			sourceTree = "<group>";
+		};
+		88705192257E754600C3A5DE /* SmokerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				88705193257E754600C3A5DE /* SmokerUITests.swift */,
+				88705195257E754600C3A5DE /* Info.plist */,
+			);
+			path = SmokerUITests;
+			sourceTree = "<group>";
+		};
+		887051A4257E768D00C3A5DE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				887051AE257E76FA00C3A5DE /* SelectableRow.swift */,
+				887051A6257E76BF00C3A5DE /* TestStates.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		887051A5257E769400C3A5DE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				887051B6257E7A0300C3A5DE /* MultipleSelectionRow.swift */,
+				887051BE257E7B2300C3A5DE /* TestView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		88705172257E754400C3A5DE /* Smoker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88705198257E754600C3A5DE /* Build configuration list for PBXNativeTarget "Smoker" */;
+			buildPhases = (
+				8870516F257E754400C3A5DE /* Sources */,
+				88705170257E754400C3A5DE /* Frameworks */,
+				88705171257E754400C3A5DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Smoker;
+			productName = Smoker;
+			productReference = 88705173257E754400C3A5DE /* Smoker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		88705183257E754600C3A5DE /* SmokerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8870519B257E754600C3A5DE /* Build configuration list for PBXNativeTarget "SmokerTests" */;
+			buildPhases = (
+				88705180257E754600C3A5DE /* Sources */,
+				88705181257E754600C3A5DE /* Frameworks */,
+				88705182257E754600C3A5DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88705186257E754600C3A5DE /* PBXTargetDependency */,
+			);
+			name = SmokerTests;
+			productName = SmokerTests;
+			productReference = 88705184257E754600C3A5DE /* SmokerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8870518E257E754600C3A5DE /* SmokerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8870519E257E754600C3A5DE /* Build configuration list for PBXNativeTarget "SmokerUITests" */;
+			buildPhases = (
+				8870518B257E754600C3A5DE /* Sources */,
+				8870518C257E754600C3A5DE /* Frameworks */,
+				8870518D257E754600C3A5DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88705191257E754600C3A5DE /* PBXTargetDependency */,
+			);
+			name = SmokerUITests;
+			productName = SmokerUITests;
+			productReference = 8870518F257E754600C3A5DE /* SmokerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8870516B257E754300C3A5DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					88705172257E754400C3A5DE = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					88705183257E754600C3A5DE = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 88705172257E754400C3A5DE;
+					};
+					8870518E257E754600C3A5DE = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 88705172257E754400C3A5DE;
+					};
+				};
+			};
+			buildConfigurationList = 8870516E257E754300C3A5DE /* Build configuration list for PBXProject "Smoker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8870516A257E754300C3A5DE;
+			productRefGroup = 88705174257E754400C3A5DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				88705172257E754400C3A5DE /* Smoker */,
+				88705183257E754600C3A5DE /* SmokerTests */,
+				8870518E257E754600C3A5DE /* SmokerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		88705171257E754400C3A5DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8870517E257E754500C3A5DE /* Preview Assets.xcassets in Resources */,
+				8870517B257E754500C3A5DE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88705182257E754600C3A5DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8870518D257E754600C3A5DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8870516F257E754400C3A5DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				887051BF257E7B2300C3A5DE /* TestView.swift in Sources */,
+				88705179257E754400C3A5DE /* ContentView.swift in Sources */,
+				887051AF257E76FA00C3A5DE /* SelectableRow.swift in Sources */,
+				887051A7257E76BF00C3A5DE /* TestStates.swift in Sources */,
+				887051B7257E7A0300C3A5DE /* MultipleSelectionRow.swift in Sources */,
+				88705177257E754400C3A5DE /* SmokerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88705180257E754600C3A5DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88705189257E754600C3A5DE /* SmokerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8870518B257E754600C3A5DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88705194257E754600C3A5DE /* SmokerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		88705186257E754600C3A5DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88705172257E754400C3A5DE /* Smoker */;
+			targetProxy = 88705185257E754600C3A5DE /* PBXContainerItemProxy */;
+		};
+		88705191257E754600C3A5DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88705172257E754400C3A5DE /* Smoker */;
+			targetProxy = 88705190257E754600C3A5DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		88705196257E754600C3A5DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		88705197257E754600C3A5DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		88705199257E754600C3A5DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Smoker/Preview Content\"";
+				DEVELOPMENT_TEAM = NCVC2MHU7M;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Smoker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.npy.Smoker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8870519A257E754600C3A5DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Smoker/Preview Content\"";
+				DEVELOPMENT_TEAM = NCVC2MHU7M;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Smoker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.npy.Smoker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8870519C257E754600C3A5DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NCVC2MHU7M;
+				INFOPLIST_FILE = SmokerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.npy.SmokerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Smoker.app/Smoker";
+			};
+			name = Debug;
+		};
+		8870519D257E754600C3A5DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NCVC2MHU7M;
+				INFOPLIST_FILE = SmokerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.npy.SmokerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Smoker.app/Smoker";
+			};
+			name = Release;
+		};
+		8870519F257E754600C3A5DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NCVC2MHU7M;
+				INFOPLIST_FILE = SmokerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.npy.SmokerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Smoker;
+			};
+			name = Debug;
+		};
+		887051A0257E754600C3A5DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NCVC2MHU7M;
+				INFOPLIST_FILE = SmokerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.npy.SmokerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Smoker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8870516E257E754300C3A5DE /* Build configuration list for PBXProject "Smoker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88705196257E754600C3A5DE /* Debug */,
+				88705197257E754600C3A5DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88705198257E754600C3A5DE /* Build configuration list for PBXNativeTarget "Smoker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88705199257E754600C3A5DE /* Debug */,
+				8870519A257E754600C3A5DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8870519B257E754600C3A5DE /* Build configuration list for PBXNativeTarget "SmokerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8870519C257E754600C3A5DE /* Debug */,
+				8870519D257E754600C3A5DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8870519E257E754600C3A5DE /* Build configuration list for PBXNativeTarget "SmokerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8870519F257E754600C3A5DE /* Debug */,
+				887051A0257E754600C3A5DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8870516B257E754300C3A5DE /* Project object */;
+}
