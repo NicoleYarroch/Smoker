@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct SmokerApp: App {
+    private let testManager: TestManager = TestManager()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TestView(testManager: testManager)
         }
     }
 }

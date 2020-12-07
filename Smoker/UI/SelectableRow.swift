@@ -13,5 +13,5 @@ protocol SelectableRow {
     var isSelected: Bool { get set }
     var testResult: TestResult { get set }
     var testResultColor: Color { get set }
-    func performTask(_ handler: @escaping (TestResult) -> ())
+    var performTask: (@escaping ((TestResult, _ errorString: String?) -> Void)) -> () { get set }
 }

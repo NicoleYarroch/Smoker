@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "BiSON",
+        "repositoryURL": "https://github.com/smartdevicelink/bson_c_lib.git",
+        "state": {
+          "branch": null,
+          "revision": "e82d717ae4a9abc833fba51c75bc9b25a32dd5bf",
+          "version": "1.2.3"
+        }
+      },
+      {
+        "package": "SmartDeviceLink",
+        "repositoryURL": "https://github.com/smartdevicelink/sdl_ios",
+        "state": {
+          "branch": null,
+          "revision": "58f52f6dca97de018f5337332f410def76df26ec",
+          "version": "7.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

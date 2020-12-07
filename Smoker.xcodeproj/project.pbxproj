@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		88705177257E754400C3A5DE /* SmokerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705176257E754400C3A5DE /* SmokerApp.swift */; };
-		88705179257E754400C3A5DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705178257E754400C3A5DE /* ContentView.swift */; };
 		8870517B257E754500C3A5DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8870517A257E754500C3A5DE /* Assets.xcassets */; };
 		8870517E257E754500C3A5DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8870517D257E754500C3A5DE /* Preview Assets.xcassets */; };
 		88705189257E754600C3A5DE /* SmokerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705188257E754600C3A5DE /* SmokerTests.swift */; };
@@ -17,6 +16,16 @@
 		887051AF257E76FA00C3A5DE /* SelectableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051AE257E76FA00C3A5DE /* SelectableRow.swift */; };
 		887051B7257E7A0300C3A5DE /* MultipleSelectionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051B6257E7A0300C3A5DE /* MultipleSelectionRow.swift */; };
 		887051BF257E7B2300C3A5DE /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051BE257E7B2300C3A5DE /* TestView.swift */; };
+		887051C5257E7E6E00C3A5DE /* SmartDeviceLinkSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 887051C4257E7E6E00C3A5DE /* SmartDeviceLinkSwift */; };
+		887051C7257E7E6E00C3A5DE /* SmartDeviceLink in Frameworks */ = {isa = PBXBuildFile; productRef = 887051C6257E7E6E00C3A5DE /* SmartDeviceLink */; };
+		887051D4257E806800C3A5DE /* ProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051D3257E806800C3A5DE /* ProxyManager.swift */; };
+		887051D9257E80AF00C3A5DE /* SDLAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051D8257E80AF00C3A5DE /* SDLAppConstants.swift */; };
+		887051E1257E822F00C3A5DE /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051E0257E822F00C3A5DE /* TestManager.swift */; };
+		887051F1257E881300C3A5DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887051F0257E881300C3A5DE /* AppDelegate.swift */; };
+		88705206257E8B1700C3A5DE /* AlertTestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705205257E8B1700C3A5DE /* AlertTestManager.swift */; };
+		8870520E257E8C4500C3A5DE /* Artworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8870520D257E8C4500C3A5DE /* Artworks.swift */; };
+		88705213257EEC5000C3A5DE /* MenuTestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705212257EEC5000C3A5DE /* MenuTestManager.swift */; };
+		8870521B257EF1CD00C3A5DE /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8870521A257EF1CD00C3A5DE /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +48,6 @@
 /* Begin PBXFileReference section */
 		88705173257E754400C3A5DE /* Smoker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smoker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88705176257E754400C3A5DE /* SmokerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokerApp.swift; sourceTree = "<group>"; };
-		88705178257E754400C3A5DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8870517A257E754500C3A5DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8870517D257E754500C3A5DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8870517F257E754500C3A5DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +61,14 @@
 		887051AE257E76FA00C3A5DE /* SelectableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableRow.swift; sourceTree = "<group>"; };
 		887051B6257E7A0300C3A5DE /* MultipleSelectionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectionRow.swift; sourceTree = "<group>"; };
 		887051BE257E7B2300C3A5DE /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		887051D3257E806800C3A5DE /* ProxyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxyManager.swift; sourceTree = "<group>"; };
+		887051D8257E80AF00C3A5DE /* SDLAppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDLAppConstants.swift; sourceTree = "<group>"; };
+		887051E0257E822F00C3A5DE /* TestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestManager.swift; sourceTree = "<group>"; };
+		887051F0257E881300C3A5DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		88705205257E8B1700C3A5DE /* AlertTestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTestManager.swift; sourceTree = "<group>"; };
+		8870520D257E8C4500C3A5DE /* Artworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artworks.swift; sourceTree = "<group>"; };
+		88705212257EEC5000C3A5DE /* MenuTestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTestManager.swift; sourceTree = "<group>"; };
+		8870521A257EF1CD00C3A5DE /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				887051C7257E7E6E00C3A5DE /* SmartDeviceLink in Frameworks */,
+				887051C5257E7E6E00C3A5DE /* SmartDeviceLinkSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,12 +121,12 @@
 		88705175257E754400C3A5DE /* Smoker */ = {
 			isa = PBXGroup;
 			children = (
-				887051A5257E769400C3A5DE /* UI */,
-				887051A4257E768D00C3A5DE /* Data */,
 				88705176257E754400C3A5DE /* SmokerApp.swift */,
-				88705178257E754400C3A5DE /* ContentView.swift */,
-				8870517A257E754500C3A5DE /* Assets.xcassets */,
-				8870517F257E754500C3A5DE /* Info.plist */,
+				88705204257E8B0900C3A5DE /* Data */,
+				887051D2257E805600C3A5DE /* SDL */,
+				887051A5257E769400C3A5DE /* UI */,
+				887051A4257E768D00C3A5DE /* Model */,
+				887051EF257E880600C3A5DE /* Utilities */,
 				8870517C257E754500C3A5DE /* Preview Content */,
 			);
 			path = Smoker;
@@ -140,22 +158,61 @@
 			path = SmokerUITests;
 			sourceTree = "<group>";
 		};
-		887051A4257E768D00C3A5DE /* Data */ = {
+		887051A4257E768D00C3A5DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				887051AE257E76FA00C3A5DE /* SelectableRow.swift */,
+				887051E0257E822F00C3A5DE /* TestManager.swift */,
 				887051A6257E76BF00C3A5DE /* TestStates.swift */,
 			);
-			path = Data;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		887051A5257E769400C3A5DE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				887051B6257E7A0300C3A5DE /* MultipleSelectionRow.swift */,
+				887051AE257E76FA00C3A5DE /* SelectableRow.swift */,
 				887051BE257E7B2300C3A5DE /* TestView.swift */,
+				8870521A257EF1CD00C3A5DE /* MenuView.swift */,
+				887051E8257E823D00C3A5DE /* Utilities */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		887051D2257E805600C3A5DE /* SDL */ = {
+			isa = PBXGroup;
+			children = (
+				887051D3257E806800C3A5DE /* ProxyManager.swift */,
+				887051D8257E80AF00C3A5DE /* SDLAppConstants.swift */,
+			);
+			path = SDL;
+			sourceTree = "<group>";
+		};
+		887051E8257E823D00C3A5DE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				887051B6257E7A0300C3A5DE /* MultipleSelectionRow.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		887051EF257E880600C3A5DE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				887051F0257E881300C3A5DE /* AppDelegate.swift */,
+				8870517A257E754500C3A5DE /* Assets.xcassets */,
+				8870517F257E754500C3A5DE /* Info.plist */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		88705204257E8B0900C3A5DE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				88705205257E8B1700C3A5DE /* AlertTestManager.swift */,
+				88705212257EEC5000C3A5DE /* MenuTestManager.swift */,
+				8870520D257E8C4500C3A5DE /* Artworks.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +231,10 @@
 			dependencies = (
 			);
 			name = Smoker;
+			packageProductDependencies = (
+				887051C4257E7E6E00C3A5DE /* SmartDeviceLinkSwift */,
+				887051C6257E7E6E00C3A5DE /* SmartDeviceLink */,
+			);
 			productName = Smoker;
 			productReference = 88705173257E754400C3A5DE /* Smoker.app */;
 			productType = "com.apple.product-type.application";
@@ -245,6 +306,9 @@
 				Base,
 			);
 			mainGroup = 8870516A257E754300C3A5DE;
+			packageReferences = (
+				887051C3257E7E6E00C3A5DE /* XCRemoteSwiftPackageReference "sdl_ios" */,
+			);
 			productRefGroup = 88705174257E754400C3A5DE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -287,11 +351,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8870520E257E8C4500C3A5DE /* Artworks.swift in Sources */,
 				887051BF257E7B2300C3A5DE /* TestView.swift in Sources */,
-				88705179257E754400C3A5DE /* ContentView.swift in Sources */,
 				887051AF257E76FA00C3A5DE /* SelectableRow.swift in Sources */,
+				88705206257E8B1700C3A5DE /* AlertTestManager.swift in Sources */,
+				88705213257EEC5000C3A5DE /* MenuTestManager.swift in Sources */,
+				887051D4257E806800C3A5DE /* ProxyManager.swift in Sources */,
+				887051F1257E881300C3A5DE /* AppDelegate.swift in Sources */,
+				8870521B257EF1CD00C3A5DE /* MenuView.swift in Sources */,
 				887051A7257E76BF00C3A5DE /* TestStates.swift in Sources */,
+				887051D9257E80AF00C3A5DE /* SDLAppConstants.swift in Sources */,
 				887051B7257E7A0300C3A5DE /* MultipleSelectionRow.swift in Sources */,
+				887051E1257E822F00C3A5DE /* TestManager.swift in Sources */,
 				88705177257E754400C3A5DE /* SmokerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,7 +524,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Smoker/Preview Content\"";
 				DEVELOPMENT_TEAM = NCVC2MHU7M;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Smoker/Info.plist;
+				INFOPLIST_FILE = Smoker/Utilities/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -475,7 +546,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Smoker/Preview Content\"";
 				DEVELOPMENT_TEAM = NCVC2MHU7M;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Smoker/Info.plist;
+				INFOPLIST_FILE = Smoker/Utilities/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -612,6 +683,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		887051C3257E7E6E00C3A5DE /* XCRemoteSwiftPackageReference "sdl_ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/smartdevicelink/sdl_ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		887051C4257E7E6E00C3A5DE /* SmartDeviceLinkSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 887051C3257E7E6E00C3A5DE /* XCRemoteSwiftPackageReference "sdl_ios" */;
+			productName = SmartDeviceLinkSwift;
+		};
+		887051C6257E7E6E00C3A5DE /* SmartDeviceLink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 887051C3257E7E6E00C3A5DE /* XCRemoteSwiftPackageReference "sdl_ios" */;
+			productName = SmartDeviceLink;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8870516B257E754300C3A5DE /* Project object */;
 }

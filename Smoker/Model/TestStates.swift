@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum TestType: String {
+    case alerts = "alerts"
+    case menu = "menu"
+}
+
 enum TestResult {
     case untested
     case success
@@ -47,17 +52,15 @@ class Test: Identifiable, Hashable, SelectableRow, ObservableObject {
         }
     }
     @Published var testResultColor: Color
+    var performTask: (@escaping ((TestResult, _ errorString: String?) -> Void)) -> ()
 
-    init(header: String) {
+    init(header: String, performTask: @escaping (@escaping ((TestResult, _ errorString: String?) -> Void)) -> ()) {
         self.header = header
         self.subheader = "not tested"
         self.isSelected = false
         self.testResultColor = .black
         self.testResult = .untested
-    }
-
-    func performTask(_ handler: @escaping (TestResult) -> ()) {
-        return handler(.fail)
+        self.performTask = performTask
     }
 
     static func == (lhs: Test, rhs: Test) -> Bool {
@@ -68,4 +71,3 @@ class Test: Identifiable, Hashable, SelectableRow, ObservableObject {
         hasher.combine(id)
     }
 }
-
