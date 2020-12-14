@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-enum TestType: String {
-    case alerts = "alerts"
+enum TestType: String, CaseIterable {
+    case alert = "alert"
     case menu = "menu"
 }
 
@@ -20,12 +20,12 @@ enum TestResult {
 
 class Tests: Identifiable, Hashable, ObservableObject {
     let id = UUID().uuidString
-    var header: String
+    let title: String
     @Published var tests: [Test]
 
-    init(header: String, tests: [Test]) {
-        self.header = header
+    init(testType: TestType, tests: [Test]) {
         self.tests = tests
+        title = testType.rawValue.localizedCapitalized
     }
 
     static func == (lhs: Tests, rhs: Tests) -> Bool {

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MultipleSelectionRow<RowContent: SelectableRow>: View {
     @Binding var content: RowContent
+    // Using `@Environment(\.isEnabled) private var isEnabled: Bool` crashes the app with an index out of range error... Not sure if I need to make a customm button?
+//    @Environment(\.isEnabled) private var isEnabled: Bool
 
     var body: some View {
         Button(action: {
@@ -32,6 +34,7 @@ struct MultipleSelectionRow<RowContent: SelectableRow>: View {
                 }
                 Spacer()
                 Image(systemName: content.isSelected ? "checkmark.circle.fill" : "circle").foregroundColor(content.testResultColor)
+                //(isEnabled ? content.testResultColor : Color(.systemGray))
             }
         }
     }

@@ -11,15 +11,19 @@ import SmartDeviceLinkSwift
 
 class AlertTestManager {
     private var sdlManager: SDLManager?
-    private(set) var tests = Tests(header: "Alert", tests: [])
+    private(set) var tests: Tests
 
-    func start(with manager: SDLManager) {
-        sdlManager = manager
+    init() {
+        tests = Tests(testType: .alert, tests: [])
         tests.tests = [
             Test(header: "send alert text-field-1 only", performTask: sendAlertTextField1Only),
             Test(header: "send alert text-field-2 only", performTask: sendAlertTextField2Only),
             Test(header: "send alert text-to-speech only", performTask: sendAlertTTSOnly)
         ]
+    }
+
+    func start(with manager: SDLManager) {
+        sdlManager = manager
     }
 
     private func sendAlertTextField1Only(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {

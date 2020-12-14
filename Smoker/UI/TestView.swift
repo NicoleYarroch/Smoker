@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TestView: View {
     @ObservedObject var testManager: TestManager
-    @State private var backgroundColor: Color = .blue
+    @State private var showMenuView = false
 
     init(testManager: TestManager) {
         self.testManager = testManager
@@ -17,25 +17,26 @@ struct TestView: View {
 
     var body: some View {
         NavigationView {
-            ZStack {
-                List {
-                    ForEach(testManager.tests.tests.indices, id: \.self) { index in
-                        MultipleSelectionRow(content: $testManager.tests.tests[index])
-                    }
+            List {
+                ForEach(testManager.tests.tests.indices, id: \.self) { index in
+                    MultipleSelectionRow(content: self.$testManager.tests.tests[index])
                 }
-            }
-            .navigationBarTitle(testManager.tests.header, displayMode: .large)
+            }.disabled(!testManager.sdlManagerStarted)
+            .navigationBarTitle("\(testManager.currentTestType.rawValue.localizedCapitalized) Tests", displayMode: .large)
             .navigationBarItems(trailing: Button(action: {
-                // TODO
+                showMenuView.toggle()
             }) {
-                Text("Menu")
+                Image(systemName: "line.horizontal.3")
+                    .font(Font.system(.title))
             })
+        }.sheet(isPresented: $showMenuView) {
+            MenuView(isPresented: $showMenuView, selectedTestType: $testManager.currentTestType)
         }
     }
 }
 
 struct TestView_Previews: PreviewProvider {
-    static var tests = Tests(header: "Preview Provider Testing 1, 2, 3...", tests: [
+    static var tests = [
         Test(header: "test 1") { result in
             print("test 1 result")
         },
@@ -45,9 +46,9 @@ struct TestView_Previews: PreviewProvider {
         Test(header: "test 3") { result in
             print("test 3 result")
         }
-    ])
-    static var testManager = TestManager(tests: tests)
+    ]
 
+    static var testManager = TestManager()
     static var previews: some View {
         TestView(testManager: testManager)
     }

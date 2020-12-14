@@ -11,14 +11,18 @@ import SmartDeviceLinkSwift
 
 class MenuTestManager {
     private var sdlManager: SDLManager?
-    private(set) var tests = Tests(header: "Alert", tests: [])
+    private(set) var tests: Tests
 
-    func start(with manager: SDLManager) {
-        sdlManager = manager
+    init() {
+        tests = Tests(testType: .alert, tests: [])
         tests.tests = [
             Test(header: "send add-command menu-only", performTask: sendAddCommandMenuOnly),
             Test(header: "delete add-command menu-only", performTask: deleteAddCommandMenuOnly)
         ]
+    }
+
+    func start(with manager: SDLManager) {
+        sdlManager = manager
     }
 
     func sendAddCommandMenuOnly(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {

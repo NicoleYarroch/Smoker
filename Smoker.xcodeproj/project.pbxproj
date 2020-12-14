@@ -170,10 +170,10 @@
 		887051A5257E769400C3A5DE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				887051B6257E7A0300C3A5DE /* MultipleSelectionRow.swift */,
 				887051AE257E76FA00C3A5DE /* SelectableRow.swift */,
 				887051BE257E7B2300C3A5DE /* TestView.swift */,
 				8870521A257EF1CD00C3A5DE /* MenuView.swift */,
-				887051E8257E823D00C3A5DE /* Utilities */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -185,14 +185,6 @@
 				887051D8257E80AF00C3A5DE /* SDLAppConstants.swift */,
 			);
 			path = SDL;
-			sourceTree = "<group>";
-		};
-		887051E8257E823D00C3A5DE /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				887051B6257E7A0300C3A5DE /* MultipleSelectionRow.swift */,
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 		887051EF257E880600C3A5DE /* Utilities */ = {

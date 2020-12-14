@@ -85,7 +85,6 @@ private extension ProxyManager {
 
     class func streamingMediaConfiguration() -> SDLStreamingMediaConfiguration {
         return SDLStreamingMediaConfiguration()
-
     }
 
     class func fileManagerConfiguration() -> SDLFileManagerConfiguration {

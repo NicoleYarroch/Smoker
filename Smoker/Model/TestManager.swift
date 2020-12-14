@@ -11,34 +11,48 @@ import SmartDeviceLinkSwift
 
 class TestManager: ObservableObject {
     @Published var tests: Tests
-    private(set) var sdlManager: SDLManager?
+    var currentTestType: TestType = .alert {
+        didSet {
+            switch currentTestType {
+            case.alert:
+                tests = alertTestManager.tests
+            case .menu:
+                tests = menuTestManager.tests
+            }
+        }
+    }
+    @Published var sdlManagerStarted: Bool = false
+    private var sdlManager: SDLManager?
     private let alertTestManager = AlertTestManager()
     private let menuTestManager = MenuTestManager()
 
-    init(tests: Tests? = nil) {
+    init(tests: Tests? = nil, currentTestType: TestType = .alert) {
         if let tests = tests {
+            self.currentTestType = currentTestType
             self.tests = tests
         } else {
-            self.tests = Tests(header: "Default Tests", tests: [
-                Test(header: "default test 1") { testResult in
-                    print("1 ran something")
-                }
-            ])
+            self.currentTestType = currentTestType
+            self.tests = alertTestManager.tests
         }
 
-        ProxyManager.shared.start(with: SDLAppConstants.connectionType) { (success, sdlManager) in
+        ProxyManager.shared.start(with: SDLAppConstants.connectionType) { [weak self] (success, sdlManager) in
+            if !success {
+                self?.sdlManagerStarted = false
+                self?.sdlManager = nil
+                return
+            }
+
             DispatchQueue.main.async {
-                self.start(with: sdlManager)
+                self?.sdlManagerStarted = true
+                self?.startTestManagers(with: sdlManager)
             }
         }
     }
 
-    func start(with sdlManager: SDLManager) {
+    func startTestManagers(with sdlManager: SDLManager) {
         self.sdlManager = sdlManager
         alertTestManager.start(with: sdlManager)
         menuTestManager.start(with: sdlManager)
-
-        self.tests = alertTestManager.tests
     }
 }
 
