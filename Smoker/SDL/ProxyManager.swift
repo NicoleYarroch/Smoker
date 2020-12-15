@@ -16,6 +16,7 @@ enum SDLConnectionType {
 
 class ProxyManager: NSObject {
     public private(set) var sdlManager: SDLManager!
+    private var sdlManagerStarted: Bool = false
     var hmiStateChangedHandler: ((_ oldLevel: SDLHMILevel, _ newLevel: SDLHMILevel) -> Void)?
 
     static let shared = ProxyManager()
@@ -23,18 +24,19 @@ class ProxyManager: NSObject {
         super.init()
     }
 
-    func start(with connectionType: SDLConnectionType, successHandler: @escaping ((_ success: Bool, _ manager: SDLManager) -> Void)) {
+    func start(with connectionType: SDLConnectionType, successHandler: @escaping ((_ success: Bool) -> Void)) {
         sdlManager = SDLManager(configuration: connectionType == .iAP ? ProxyManager.connectIAP() : ProxyManager.connectTCP(), delegate: self)
 
         sdlManager.start { [unowned self] (success, error) in
             if success {
                 let vehicleType = self.sdlManager.registerResponse?.vehicleType
                 SDLLog.d("Successfully connected to a SDL accessory ✌️. Vehicle: \(vehicleType?.make ?? "unknown make") \(vehicleType?.model ?? "unknown model") \(vehicleType?.modelYear ?? "unknown year")")
-                return successHandler(true, self.sdlManager)
             } else {
                 SDLLog.d("Could not connect with a SDL accessory 👎. Error: \(error != nil ? error!.localizedDescription : "No error returned")")
-                return successHandler(false, self.sdlManager)
             }
+
+            sdlManagerStarted = success
+            return successHandler(success)
         }
     }
 }
@@ -97,6 +99,7 @@ private extension ProxyManager {
 extension ProxyManager: SDLManagerDelegate {
     func managerDidDisconnect() {
         print("Disconnected from the SDL accessory")
+        sdlManagerStarted = false
     }
 
     func hmiLevel(_ oldLevel: SDLHMILevel, didChangeToLevel newLevel: SDLHMILevel) {
@@ -111,6 +114,36 @@ extension ProxyManager: SDLManagerDelegate {
         case .background: break     // The SDL app is not in the foreground
         case .none: break           // The SDL app is not yet running
         default: break
+        }
+    }
+}
+
+extension ProxyManager {
+    static let defaultNoErrorString = "no error"
+
+    func sendRequest(_ request: SDLRPCRequest, successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        guard let sdlManager = sdlManager, sdlManagerStarted == true else { return successHandler(.fail, "no connection to module") }
+        sdlManager.send(request: request) { (_: SDLRPCRequest?, response: SDLRPCResponse?, error: Error?) in
+            let responseSuccess = response?.success.boolValue ?? false
+            var responseError = ProxyManager.defaultNoErrorString
+            if let error = error as NSError? {
+                responseError = error.localizedDescription
+            }
+            successHandler(responseSuccess ? .success : .fail, responseError)
+        }
+    }
+
+    func sendScreenManagerAlert(_ request: SDLAlertView, successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        guard let sdlManager = sdlManager, sdlManagerStarted == true else { return successHandler(.fail, "no connection to module") }
+        sdlManager.screenManager.presentAlert(request) { error in
+            var responseError = ProxyManager.defaultNoErrorString
+            var responseSuccess = error == nil
+            if let errorUserInfo = error as NSError?, let moduleError = errorUserInfo.userInfo["error"] as? NSError {
+                responseError = moduleError.localizedDescription
+                responseSuccess = (moduleError.localizedDescription == SDLResult.aborted.rawValue.rawValue || moduleError.localizedDescription == SDLResult.success.rawValue.rawValue)
+            }
+
+            successHandler(responseSuccess ? .success : .fail, responseError)
         }
     }
 }

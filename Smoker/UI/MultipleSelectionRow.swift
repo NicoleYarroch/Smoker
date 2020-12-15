@@ -14,6 +14,9 @@ struct MultipleSelectionRow<RowContent: SelectableRow>: View {
 
     var body: some View {
         Button(action: {
+            content.isSelected = false
+            content.testResult = .testing
+            content.subheader = "waiting for response..."
             content.performTask { (testResult, error) in
                 DispatchQueue.main.async {
                     if testResult == .success || testResult == .fail {

@@ -10,31 +10,14 @@ import SwiftUI
 enum TestType: String, CaseIterable {
     case alert = "alert"
     case menu = "menu"
+    case screenManagerAlert = "screen manager alert"
 }
 
 enum TestResult {
+    case testing
     case untested
     case success
     case fail
-}
-
-class Tests: Identifiable, Hashable, ObservableObject {
-    let id = UUID().uuidString
-    let title: String
-    @Published var tests: [Test]
-
-    init(testType: TestType, tests: [Test]) {
-        self.tests = tests
-        title = testType.rawValue.localizedCapitalized
-    }
-
-    static func == (lhs: Tests, rhs: Tests) -> Bool {
-        return lhs.id == rhs.id
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
 }
 
 class Test: Identifiable, Hashable, SelectableRow, ObservableObject {
@@ -45,7 +28,7 @@ class Test: Identifiable, Hashable, SelectableRow, ObservableObject {
     @Published var testResult: TestResult {
         didSet {
             switch testResult {
-            case .untested: testResultColor = .gray
+            case .untested, .testing: testResultColor = .gray
             case .success: testResultColor = .green
             case .fail: testResultColor = .red
             }

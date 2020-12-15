@@ -14,9 +14,9 @@
         "package": "SmartDeviceLink",
         "repositoryURL": "https://github.com/smartdevicelink/sdl_ios",
         "state": {
-          "branch": null,
-          "revision": "58f52f6dca97de018f5337332f410def76df26ec",
-          "version": "7.0.0"
+          "branch": "feature/issue_1579_alert_manager",
+          "revision": "80db006f06e5a51e3698bff9c6d536f330a5d11b",
+          "version": null
         }
       }
     ]

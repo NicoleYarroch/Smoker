@@ -10,19 +10,13 @@ import SmartDeviceLink
 import SmartDeviceLinkSwift
 
 class MenuTestManager {
-    private var sdlManager: SDLManager?
-    private(set) var tests: Tests
+    private(set) var tests = [Test]()
 
     init() {
-        tests = Tests(testType: .alert, tests: [])
-        tests.tests = [
+        tests = [
             Test(header: "send add-command menu-only", performTask: sendAddCommandMenuOnly),
             Test(header: "delete add-command menu-only", performTask: deleteAddCommandMenuOnly)
         ]
-    }
-
-    func start(with manager: SDLManager) {
-        sdlManager = manager
     }
 
     func sendAddCommandMenuOnly(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
@@ -30,12 +24,12 @@ class MenuTestManager {
             SDLLog.d("Add command selected with: \(onCommand.triggerSource)")
         }
         
-        TestManager.sendRequest(addCommand, with: sdlManager, successHandler: successHandler)
+        ProxyManager.shared.sendRequest(addCommand, successHandler: successHandler)
     }
     
     func deleteAddCommandMenuOnly(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
         let deleteCommand = SDLDeleteCommand(id: 56)
 
-        TestManager.sendRequest(deleteCommand, with: sdlManager, successHandler: successHandler)
+        ProxyManager.shared.sendRequest(deleteCommand, successHandler: successHandler)
     }
 }

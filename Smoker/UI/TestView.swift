@@ -18,8 +18,8 @@ struct TestView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(testManager.tests.tests.indices, id: \.self) { index in
-                    MultipleSelectionRow(content: self.$testManager.tests.tests[index])
+                ForEach(testManager.tests.indices, id: \.self) { index in
+                    MultipleSelectionRow(content: self.$testManager.tests[index])
                 }
             }.disabled(!testManager.sdlManagerStarted)
             .navigationBarTitle("\(testManager.currentTestType.rawValue.localizedCapitalized) Tests", displayMode: .large)
