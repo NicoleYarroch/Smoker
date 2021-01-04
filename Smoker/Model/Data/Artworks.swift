@@ -9,17 +9,21 @@ import Foundation
 import SmartDeviceLink
 
 class Artworks {
-    static var solidColor: SDLArtwork {
-        return SDLArtwork(image: UIImage.randomSolidColorImage(), persistent: false, as: .JPG)
+    static var randomSolidColor: SDLArtwork {
+        return SDLArtwork(image: UIImage.randomSolidColor(), persistent: false, as: .JPG)
+    }
+
+    static func randomSolidColor(width: Int = 100, height: Int = 100) -> SDLArtwork {
+        return SDLArtwork(image: UIImage.randomSolidColor(width: width, height: height), persistent: false, as: .JPG)
     }
 }
 
 extension UIImage {
-    static func randomSolidColorImage() -> UIImage {
-        return randomSolidColorImage(width: 5, height: 5)
+    static func randomSolidColor() -> UIImage {
+        return randomSolidColor(width: 300, height: 300)
     }
 
-    static func randomSolidColorImage(width: Int = 100, height: Int = 100) -> UIImage {
+    static func randomSolidColor(width: Int = 100, height: Int = 100) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: width, height: height)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
@@ -39,6 +43,6 @@ extension CGFloat {
 
 extension UIColor {
     static func random() -> UIColor {
-        return UIColor(red:   .random(), green: .random(), blue:  .random(), alpha: 1.0)
+        return UIColor(red: .random(), green: .random(), blue:  .random(), alpha: 1.0)
     }
 }

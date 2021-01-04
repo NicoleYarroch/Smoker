@@ -19,17 +19,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "29531E5E-2605-45EA-AD3A-F78B40F4965B"
+            uuid = "AAF8C5B7-5786-4C72-B8B8-FE022987DF04"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Smoker/UI/MenuView.swift"
+            filePath = "../../../../../Library/Developer/Xcode/DerivedData/Smoker-flbxaljazpqujxdktktfycltsavk/SourcePackages/checkouts/sdl_ios/SmartDeviceLink/private/SDLAlertManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-presentAlert:withCompletionHandler:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

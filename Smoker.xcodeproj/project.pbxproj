@@ -26,6 +26,9 @@
 		8870520E257E8C4500C3A5DE /* Artworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8870520D257E8C4500C3A5DE /* Artworks.swift */; };
 		88705213257EEC5000C3A5DE /* MenuTestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705212257EEC5000C3A5DE /* MenuTestManager.swift */; };
 		8870521B257EF1CD00C3A5DE /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8870521A257EF1CD00C3A5DE /* MenuView.swift */; };
+		887AF5F125A3800700E73F64 /* UINavigationController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887AF5F025A3800700E73F64 /* UINavigationController+Appearance.swift */; };
+		887AF5F625A39CE900E73F64 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887AF5F525A39CE900E73F64 /* Audio.swift */; };
+		887AF5FB25A39DFB00E73F64 /* SoftButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887AF5FA25A39DFB00E73F64 /* SoftButtons.swift */; };
 		88A27EDD2587C73E00D22F70 /* ScreenManagerAlertTestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A27EDC2587C73E00D22F70 /* ScreenManagerAlertTestManager.swift */; };
 		88E3C9D5258938C00046C09E /* fox_dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 88E3C9D4258938C00046C09E /* fox_dog.mp3 */; };
 /* End PBXBuildFile section */
@@ -71,6 +74,9 @@
 		8870520D257E8C4500C3A5DE /* Artworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artworks.swift; sourceTree = "<group>"; };
 		88705212257EEC5000C3A5DE /* MenuTestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTestManager.swift; sourceTree = "<group>"; };
 		8870521A257EF1CD00C3A5DE /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		887AF5F025A3800700E73F64 /* UINavigationController+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Appearance.swift"; sourceTree = "<group>"; };
+		887AF5F525A39CE900E73F64 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		887AF5FA25A39DFB00E73F64 /* SoftButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftButtons.swift; sourceTree = "<group>"; };
 		88A27EDC2587C73E00D22F70 /* ScreenManagerAlertTestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManagerAlertTestManager.swift; sourceTree = "<group>"; };
 		88E3C9D4258938C00046C09E /* fox_dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fox_dog.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +182,7 @@
 				887051AE257E76FA00C3A5DE /* SelectableRow.swift */,
 				887051BE257E7B2300C3A5DE /* TestView.swift */,
 				8870521A257EF1CD00C3A5DE /* MenuView.swift */,
+				887AF5F025A3800700E73F64 /* UINavigationController+Appearance.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -204,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				887051E0257E822F00C3A5DE /* TestManager.swift */,
+				88FFAC9725A35399006F4263 /* Utilities */,
 				88E3C9CA2588E5B30046C09E /* States */,
 				88E3C9C02588E54B0046C09E /* Sub Managers */,
 			);
@@ -223,7 +231,6 @@
 			children = (
 				88705205257E8B1700C3A5DE /* AlertTestManager.swift */,
 				88705212257EEC5000C3A5DE /* MenuTestManager.swift */,
-				8870520D257E8C4500C3A5DE /* Artworks.swift */,
 				88A27ED82587C6F900D22F70 /* Screen Manager */,
 			);
 			name = "Sub Managers";
@@ -243,6 +250,16 @@
 				88E3C9D4258938C00046C09E /* fox_dog.mp3 */,
 			);
 			path = "Sound Files";
+			sourceTree = "<group>";
+		};
+		88FFAC9725A35399006F4263 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8870520D257E8C4500C3A5DE /* Artworks.swift */,
+				887AF5F525A39CE900E73F64 /* Audio.swift */,
+				887AF5FA25A39DFB00E73F64 /* SoftButtons.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,14 +400,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8870520E257E8C4500C3A5DE /* Artworks.swift in Sources */,
+				887AF5F125A3800700E73F64 /* UINavigationController+Appearance.swift in Sources */,
 				887051BF257E7B2300C3A5DE /* TestView.swift in Sources */,
 				887051AF257E76FA00C3A5DE /* SelectableRow.swift in Sources */,
 				88705206257E8B1700C3A5DE /* AlertTestManager.swift in Sources */,
 				88705213257EEC5000C3A5DE /* MenuTestManager.swift in Sources */,
 				887051D4257E806800C3A5DE /* ProxyManager.swift in Sources */,
 				887051F1257E881300C3A5DE /* AppDelegate.swift in Sources */,
+				887AF5F625A39CE900E73F64 /* Audio.swift in Sources */,
 				8870521B257EF1CD00C3A5DE /* MenuView.swift in Sources */,
 				887051A7257E76BF00C3A5DE /* TestStates.swift in Sources */,
+				887AF5FB25A39DFB00E73F64 /* SoftButtons.swift in Sources */,
 				887051D9257E80AF00C3A5DE /* SDLAppConstants.swift in Sources */,
 				887051B7257E7A0300C3A5DE /* MultipleSelectionRow.swift in Sources */,
 				887051E1257E822F00C3A5DE /* TestManager.swift in Sources */,

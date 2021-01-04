@@ -107,29 +107,53 @@ extension ProxyManager: SDLManagerDelegate {
             guard let hmiStateChangedHandler = hmiStateChangedHandler else { return }
             hmiStateChangedHandler(oldLevel, newLevel)
         }
-
-        switch newLevel {
-        case .full: break           // The SDL app is in the foreground
-        case .limited: break        // The SDL app's menu is open
-        case .background: break     // The SDL app is not in the foreground
-        case .none: break           // The SDL app is not yet running
-        default: break
-        }
     }
 }
 
 extension ProxyManager {
     static let defaultNoErrorString = "no error"
+    static let defaultNoConnectionString = "no connection to module"
 
     func sendRequest(_ request: SDLRPCRequest, successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
-        guard let sdlManager = sdlManager, sdlManagerStarted == true else { return successHandler(.fail, "no connection to module") }
-        sdlManager.send(request: request) { (_: SDLRPCRequest?, response: SDLRPCResponse?, error: Error?) in
-            let responseSuccess = response?.success.boolValue ?? false
+        guard let sdlManager = sdlManager, sdlManagerStarted == true else { return successHandler(.fail, ProxyManager.defaultNoConnectionString) }
+        sdlManager.send(request: request) { (request: SDLRPCRequest?, response: SDLRPCResponse?, error: Error?) in
+            var responseSuccess = response?.success.boolValue ?? false
+            if let cancelInteractionResponse = response as? SDLCancelInteractionResponse, responseSuccess == false {
+                if cancelInteractionResponse.resultCode == .ignored {
+                    responseSuccess = true
+                }
+            }
+
             var responseError = ProxyManager.defaultNoErrorString
             if let error = error as NSError? {
                 responseError = error.localizedDescription
             }
+
             successHandler(responseSuccess ? .success : .fail, responseError)
+        }
+    }
+
+    func sendFile(_ file: SDLFile, successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        sendFiles([file], successHandler: successHandler)
+    }
+
+    func sendFiles(_ files: [SDLFile], successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        guard let sdlManager = sdlManager, sdlManagerStarted == true else {
+            return successHandler(.fail, ProxyManager.defaultNoConnectionString)
+        }
+
+        var filesToUpload = files
+        filesToUpload.removeAll { file -> Bool in
+            !sdlManager.fileManager.fileNeedsUpload(file)
+        }
+
+        if filesToUpload.count == 0 {
+            return successHandler(.success, nil)
+        }
+
+        sdlManager.fileManager.upload(files: filesToUpload) { (error) in
+            let returnedError = error as NSError?
+            return successHandler(returnedError == nil ? .success : .fail, returnedError?.localizedDescription)
         }
     }
 
@@ -141,6 +165,9 @@ extension ProxyManager {
             if let errorUserInfo = error as NSError?, let moduleError = errorUserInfo.userInfo["error"] as? NSError {
                 responseError = moduleError.localizedDescription
                 responseSuccess = (moduleError.localizedDescription == SDLResult.aborted.rawValue.rawValue || moduleError.localizedDescription == SDLResult.success.rawValue.rawValue)
+            } else if let errorUserInfo = error as NSError?, let moduleError = errorUserInfo.userInfo[NSLocalizedDescriptionKey] as? String {
+                responseError = moduleError
+                responseSuccess = false
             }
 
             successHandler(responseSuccess ? .success : .fail, responseError)
