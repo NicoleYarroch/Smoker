@@ -147,7 +147,7 @@ extension ScreenManagerAlertTestManager {
 
     private class var defaultCancelButtonObject: SDLSoftButtonObject {
         let buttonName = "Cancel"
-        let iconSize = SoftButtons.softButtonIconSize
+        let iconSize = SDLImageResolution(width: 500, height: 500)
         return SDLSoftButtonObject(name: buttonName, text: buttonName, artwork: Artworks.randomSolidColor(width: iconSize.resolutionWidth.intValue, height: iconSize.resolutionHeight.intValue)) { (press, event) in
             SDLLog.d("\(buttonName) button selected")
         }

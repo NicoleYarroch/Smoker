@@ -19,21 +19,24 @@ class TestManager: ObservableObject {
             case .menu:
                 tests = menuTestManager.tests
             case .screenManagerAlert:
-                tests = screenManagerTestManager.tests
+                tests = screenManagerAlertTestManager.tests
+            case .media:
+                tests = mediaTestManager.tests
             }
         }
     }
     @Published var sdlManagerStarted: Bool = false
     private let alertTestManager = AlertTestManager()
     private let menuTestManager = MenuTestManager()
-    private let screenManagerTestManager = ScreenManagerAlertTestManager()
+    private let screenManagerAlertTestManager = ScreenManagerAlertTestManager()
+    private let mediaTestManager = MediaTestManager()
 
     init(tests: [Test]? = nil, currentTestType: TestType = .alert) {
         if let tests = tests {
             self.currentTestType = currentTestType
             self.tests = tests
         } else {
-            self.tests = screenManagerTestManager.tests
+            self.tests = screenManagerAlertTestManager.tests
             self.currentTestType = .screenManagerAlert
         }
 

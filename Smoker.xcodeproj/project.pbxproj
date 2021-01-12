@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8832A1932587FB6F00614945 /* SmartDeviceLinkSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8832A1922587FB6F00614945 /* SmartDeviceLinkSwift */; };
 		8832A1952587FB6F00614945 /* SmartDeviceLink in Frameworks */ = {isa = PBXBuildFile; productRef = 8832A1942587FB6F00614945 /* SmartDeviceLink */; };
+		88605B0D25A4B0FD00AD2C0B /* MediaTestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88605B0C25A4B0FD00AD2C0B /* MediaTestManager.swift */; };
 		88705177257E754400C3A5DE /* SmokerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88705176257E754400C3A5DE /* SmokerApp.swift */; };
 		8870517B257E754500C3A5DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8870517A257E754500C3A5DE /* Assets.xcassets */; };
 		8870517E257E754500C3A5DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8870517D257E754500C3A5DE /* Preview Assets.xcassets */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		88605B0C25A4B0FD00AD2C0B /* MediaTestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTestManager.swift; sourceTree = "<group>"; };
 		88705173257E754400C3A5DE /* Smoker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smoker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88705176257E754400C3A5DE /* SmokerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokerApp.swift; sourceTree = "<group>"; };
 		8870517A257E754500C3A5DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			children = (
 				88705205257E8B1700C3A5DE /* AlertTestManager.swift */,
 				88705212257EEC5000C3A5DE /* MenuTestManager.swift */,
+				88605B0C25A4B0FD00AD2C0B /* MediaTestManager.swift */,
 				88A27ED82587C6F900D22F70 /* Screen Manager */,
 			);
 			name = "Sub Managers";
@@ -403,6 +406,7 @@
 				887AF5F125A3800700E73F64 /* UINavigationController+Appearance.swift in Sources */,
 				887051BF257E7B2300C3A5DE /* TestView.swift in Sources */,
 				887051AF257E76FA00C3A5DE /* SelectableRow.swift in Sources */,
+				88605B0D25A4B0FD00AD2C0B /* MediaTestManager.swift in Sources */,
 				88705206257E8B1700C3A5DE /* AlertTestManager.swift in Sources */,
 				88705213257EEC5000C3A5DE /* MenuTestManager.swift in Sources */,
 				887051D4257E806800C3A5DE /* ProxyManager.swift in Sources */,
