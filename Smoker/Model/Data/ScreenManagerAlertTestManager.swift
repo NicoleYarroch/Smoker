@@ -11,6 +11,7 @@ import SmartDeviceLinkSwift
 
 class ScreenManagerAlertTestManager {
     private(set) var tests = [Test]()
+    private var storedAlerts = [SDLAlertView(text: "stored alert!", secondaryText: nil, tertiaryText: nil, timeout: nil, showWaitIndicator: NSNumber(false), audioIndication: SDLAlertAudioData(speechSynthesizerString: "stored alert"), buttons: nil, icon: SDLArtwork(staticIcon: .clock))]
 
     init() {
         tests = [
@@ -23,7 +24,10 @@ class ScreenManagerAlertTestManager {
             Test(header: "cancel UI-only alert", performTask: cancelUIOnlyAlert),
             Test(header: "cancel VR-only alert", performTask: cancelVROnlyAlert),
             Test(header: "cancel UI-&-VR alert", performTask: cancelUIAndVRAlert),
+            Test(header: "cancel stored alert", performTask: cancelStoredAlert),
             Test(header: "modify alert view and resend", performTask: modifyAlertAndResend),
+            Test(header: "send alerts in quick succession", performTask: sendAlertsInQuickSuccession),
+            Test(header: "send alert with more than 4 buttons", performTask: sendAlertWithMoreThan4SoftButtons),
             Test(header: "send alert with multiple-state soft buttons", performTask: sendBrokenAlertMultipleSoftButtonStates),
             Test(header: "send alert with neither text, secondaryText, or audio set", performTask: sendBrokenAlertWithWrongFieldSet)
         ]
@@ -62,13 +66,13 @@ class ScreenManagerAlertTestManager {
     }
 
     private func sendAlertAllPropertiesSet(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
-        let alert = SDLAlertView(text: "alertText1", secondaryText: "alertText2", tertiaryText: "alertText3", timeout: 8, showWaitIndicator: true, audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.defaultOkButtonObject], icon: Artworks.randomSolidColor)
+        let alert = SDLAlertView(text: "alertText1", secondaryText: "alertText2", tertiaryText: "alertText3", timeout: NSNumber(8), showWaitIndicator: NSNumber(true), audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.defaultOkButtonObject], icon: Artworks.randomSolidColor)
 
         ProxyManager.shared.sendScreenManagerAlert(alert, successHandler: successHandler)
     }
 
     private func sendAlertStaticIcons(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
-        let alert = SDLAlertView(text: "alertText1", secondaryText: "alertText2", tertiaryText: "alertText3", timeout: 8, showWaitIndicator: true, audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.staticIconButtonObject], icon: SDLArtwork(staticIcon: .audioMute))
+        let alert = SDLAlertView(text: "alertText1", secondaryText: "alertText2", tertiaryText: "alertText3", timeout: NSNumber(8), showWaitIndicator: NSNumber(true), audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.staticIconButtonObject], icon: SDLArtwork(staticIcon: .audioMute))
 
         ProxyManager.shared.sendScreenManagerAlert(alert, successHandler: successHandler)
     }
@@ -89,13 +93,13 @@ class ScreenManagerAlertTestManager {
         alert.audio = SDLAlertAudioData(speechSynthesizerString: "text to speech")
         ProxyManager.shared.sendScreenManagerAlert(alert, successHandler: successHandler)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             alert.cancel()
         }
     }
 
     private func cancelUIAndVRAlert(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
-        let alert = SDLAlertView(text: "alertText1", secondaryText: "alertText2", tertiaryText: "alertText3", timeout: 8, showWaitIndicator: true, audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.defaultOkButtonObject], icon: Artworks.randomSolidColor)
+        let alert = SDLAlertView(text: "alertText1", secondaryText: "alertText2", tertiaryText: "alertText3", timeout: NSNumber(8), showWaitIndicator: NSNumber(true), audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.defaultOkButtonObject], icon: Artworks.randomSolidColor)
         ProxyManager.shared.sendScreenManagerAlert(alert, successHandler: successHandler)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -103,8 +107,29 @@ class ScreenManagerAlertTestManager {
         }
     }
 
+    private func cancelStoredAlert(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        ProxyManager.shared.sendScreenManagerAlert(storedAlerts[0], successHandler: successHandler)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self = self else { return }
+            self.storedAlerts[0].cancel()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+            guard let self = self else { return }
+            self.storedAlerts[0].text = "alert 2!"
+            self.storedAlerts[0].softButtons = [ScreenManagerAlertTestManager.defaultOkButtonObject]
+            ProxyManager.shared.sendScreenManagerAlert(self.storedAlerts[0] , successHandler: successHandler)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { [weak self] in
+            guard let self = self else { return }
+            self.storedAlerts[0].cancel()
+        }
+    }
+    
     private func modifyAlertAndResend(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
-        let alert = SDLAlertView(text: "first alert", secondaryText: "line 2", tertiaryText: "line 2", timeout: 8, showWaitIndicator: true, audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.defaultOkButtonObject, ScreenManagerAlertTestManager.defaultCancelButtonObject], icon: Artworks.randomSolidColor)
+        let alert = SDLAlertView(text: "first alert", secondaryText: "line 2", tertiaryText: "line 2", timeout: NSNumber(8), showWaitIndicator: NSNumber(true), audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.defaultOkButtonObject, ScreenManagerAlertTestManager.defaultCancelButtonObject], icon: Artworks.randomSolidColor)
 
         ProxyManager.shared.sendScreenManagerAlert(alert, successHandler: successHandler)
 
@@ -121,8 +146,55 @@ class ScreenManagerAlertTestManager {
         }
     }
 
+    private func sendAlertWithMoreThan4SoftButtons(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        let button1 = SDLSoftButtonObject(name: "button1", text: "button1", artwork: Artworks.randomSolidColor(width: 100, height: 100)) { (press, event) in
+            guard press != nil else { return }
+            SDLLog.d("button1 selected")
+        }
+        let button2 = SDLSoftButtonObject(name: "button2", text: "button2", artwork: Artworks.randomSolidColor(width: 100, height: 100)) { (press, event) in
+            guard press != nil else { return }
+            SDLLog.d("button2 selected")
+        }
+        let button3 = SDLSoftButtonObject(name: "button3", text: "button3", artwork: Artworks.randomSolidColor(width: 100, height: 100)) { (press, event) in
+            guard press != nil else { return }
+            SDLLog.d("button3 selected")
+        }
+        let button4 = SDLSoftButtonObject(name: "button4", text: "button4", artwork: Artworks.randomSolidColor(width: 100, height: 100)) { (press, event) in
+            guard press != nil else { return }
+            SDLLog.d("button4 selected")
+        }
+        let button5 = SDLSoftButtonObject(name: "button5", text: "button5", artwork: Artworks.randomSolidColor(width: 100, height: 100)) { (press, event) in
+            guard press != nil else { return }
+            SDLLog.d("button5 selected")
+        }
+
+        let alert1 = SDLAlertView(text: "first alert", secondaryText: "line 2", tertiaryText: "line 2", timeout: NSNumber(8), showWaitIndicator: NSNumber(true), audioIndication: SDLAlertAudioData(speechSynthesizerString: "bee"), buttons: [button1, button2, button3, button4, button5], icon: Artworks.randomSolidColor)
+        ProxyManager.shared.sendScreenManagerAlert(alert1, successHandler: successHandler)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+            alert1.text = "second alert"
+            ProxyManager.shared.sendScreenManagerAlert(alert1, successHandler: successHandler)
+        }
+    }
+
+    private func sendAlertsInQuickSuccession(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        let alert1 = SDLAlertView(text: "first alert", secondaryText: "line 2", tertiaryText: "line 2", timeout: NSNumber(8), showWaitIndicator: NSNumber(true), audioIndication: SDLAlertAudioData(speechSynthesizerString: "bee"), buttons: [ScreenManagerAlertTestManager.defaultOkButtonObject, ScreenManagerAlertTestManager.defaultCancelButtonObject], icon: Artworks.randomSolidColor)
+        let alert2 = SDLAlertView(text: "second alert", secondaryText: "line 2", tertiaryText: "line 2", timeout: NSNumber(8), showWaitIndicator: NSNumber(true), audioIndication: SDLAlertAudioData(speechSynthesizerString: "cow in the shoe"), buttons: [], icon: Artworks.randomSolidColor)
+        let alert3 = SDLAlertView(text: "third alert", secondaryText: "line 2", tertiaryText: "line 2", timeout: NSNumber(8), showWaitIndicator: NSNumber(true), audioIndication: SDLAlertAudioData(speechSynthesizerString: "fox in the box"), buttons: [], icon: nil)
+
+        ProxyManager.shared.sendScreenManagerAlert(alert1, successHandler: successHandler)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(5)) {
+            ProxyManager.shared.sendScreenManagerAlert(alert2, successHandler: successHandler)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(5)) {
+            ProxyManager.shared.sendScreenManagerAlert(alert3, successHandler: successHandler)
+        }
+    }
+
     private func sendBrokenAlertMultipleSoftButtonStates(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
-        let alert = SDLAlertView(text: "alertText1", secondaryText: "alertText2", tertiaryText: "alertText3", timeout: 8, showWaitIndicator: true, audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.brokenButtonObject], icon: Artworks.randomSolidColor)
+        let alert = SDLAlertView(text: "alertText1", secondaryText: "alertText2", tertiaryText: "alertText3", timeout: NSNumber(8), showWaitIndicator: NSNumber(true), audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.brokenButtonObject], icon: Artworks.randomSolidColor)
         alert.softButtons = [ScreenManagerAlertTestManager.brokenButtonObject]
 
         ProxyManager.shared.sendScreenManagerAlert(alert, successHandler: successHandler)
