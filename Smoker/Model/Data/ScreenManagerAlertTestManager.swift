@@ -28,6 +28,7 @@ class ScreenManagerAlertTestManager {
             Test(header: "modify alert view and resend", performTask: modifyAlertAndResend),
             Test(header: "send alerts in quick succession", performTask: sendAlertsInQuickSuccession),
             Test(header: "send alert with more than 4 buttons", performTask: sendAlertWithMoreThan4SoftButtons),
+            Test(header: "send alert with soft buttons with same name", performTask: sendBrokenAlertWithWrongImage),
             Test(header: "send alert with multiple-state soft buttons", performTask: sendBrokenAlertMultipleSoftButtonStates),
             Test(header: "send alert with neither text, secondaryText, or audio set", performTask: sendBrokenAlertWithWrongFieldSet)
         ]
@@ -193,6 +194,14 @@ class ScreenManagerAlertTestManager {
         }
     }
 
+    private func sendBrokenAlertWithWrongImage(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        let alert = SDLAlertView()
+        alert.text = "Testing Images"
+        alert.softButtons = [ScreenManagerAlertTestManager.defaultOkButtonObject, ScreenManagerAlertTestManager.defaultOk2ButtonObject, ScreenManagerAlertTestManager.defaultCancelButtonObject]
+
+        ProxyManager.shared.sendScreenManagerAlert(alert, successHandler: successHandler)
+    }
+
     private func sendBrokenAlertMultipleSoftButtonStates(successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
         let alert = SDLAlertView(text: "alertText1", secondaryText: "alertText2", tertiaryText: "alertText3", timeout: NSNumber(8), showWaitIndicator: NSNumber(true), audioIndication: SDLAlertAudioData(speechSynthesizerString: "hello"), buttons: [ScreenManagerAlertTestManager.brokenButtonObject], icon: Artworks.randomSolidColor)
         alert.softButtons = [ScreenManagerAlertTestManager.brokenButtonObject]
@@ -211,9 +220,17 @@ class ScreenManagerAlertTestManager {
 extension ScreenManagerAlertTestManager {
     private class var defaultOkButtonObject: SDLSoftButtonObject {
         let buttonName = "Ok"
-        let iconSize = SoftButtons.softButtonIconSize
-        return SDLSoftButtonObject(name: buttonName, text: buttonName, artwork: Artworks.randomSolidColor(width: iconSize.resolutionWidth.intValue, height: iconSize.resolutionHeight.intValue)) { (press, event) in
-            SDLLog.d("\(buttonName) button selected")
+//        let iconSize = SoftButtons.softButtonIconSize
+        return SDLSoftButtonObject(name: buttonName, text: buttonName, artwork: SDLArtwork(staticIcon: .keepLeft)) { (press, event) in
+            SDLLog.d("Ok 1 button selected")
+        }
+    }
+
+    private class var defaultOk2ButtonObject: SDLSoftButtonObject {
+        let buttonName = "Ok"
+//        let iconSize = SoftButtons.softButtonIconSize
+        return SDLSoftButtonObject(name: buttonName, text: buttonName, artwork: SDLArtwork(staticIcon: .keepLeft)) { (press, event) in
+            SDLLog.d("Ok 2 button selected")
         }
     }
 
