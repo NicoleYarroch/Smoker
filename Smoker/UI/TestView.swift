@@ -22,7 +22,7 @@ struct TestView: View {
                     MultipleSelectionRow(content: self.$testManager.tests[index])
                 }
             }.disabled(!testManager.sdlManagerStarted)
-            .navigationBarTitle("\(testManager.currentTestType.rawValue.localizedCapitalized) Tests", displayMode: .large)
+            .navigationBarTitle("\(testManager.testType.rawValue.localizedCapitalized) Tests", displayMode: .large)
             .navigationBarItems(trailing: Button(action: {
                 showMenuView.toggle()
             }) {
@@ -30,7 +30,7 @@ struct TestView: View {
                     .font(Font.system(.title)).foregroundColor(Color(UIColor.systemYellow))
             })
         }.sheet(isPresented: $showMenuView) {
-            MenuView(isPresented: $showMenuView, selectedTestType: $testManager.currentTestType)
+            MenuView(isPresented: $showMenuView, selectedTestType: $testManager.testType)
         }
     }
 }

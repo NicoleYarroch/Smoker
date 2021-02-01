@@ -113,6 +113,8 @@ extension ProxyManager: SDLManagerDelegate {
     }
 }
 
+// MARK: - Sending Requests
+
 extension ProxyManager {
     static let defaultNoErrorString = "no error"
     static let defaultNoConnectionString = "no connection to module"
@@ -159,21 +161,63 @@ extension ProxyManager {
             return successHandler(returnedError == nil ? .success : .fail, returnedError?.localizedDescription)
         }
     }
+}
 
-//    func sendScreenManagerAlert(_ request: SDLAlertView, successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
-//        guard let sdlManager = sdlManager, sdlManagerStarted == true else { return successHandler(.fail, "no connection to module") }
-//        sdlManager.screenManager.presentAlert(request) { error in
-//            var responseError = ProxyManager.defaultNoErrorString
-//            var responseSuccess = error == nil
-//            if let errorUserInfo = error as NSError?, let moduleError = errorUserInfo.userInfo["error"] as? NSError {
-//                responseError = moduleError.localizedDescription
-//                responseSuccess = (moduleError.localizedDescription == SDLResult.aborted.rawValue.rawValue || moduleError.localizedDescription == SDLResult.success.rawValue.rawValue)
-//            } else if let errorUserInfo = error as NSError?, let moduleError = errorUserInfo.userInfo[NSLocalizedDescriptionKey] as? String {
-//                responseError = moduleError
-//                responseSuccess = false
-//            }
-//
-//            successHandler(responseSuccess ? .success : .fail, responseError)
-//        }
-//    }
+// MARK: - Permission Manager Requests
+
+extension ProxyManager {
+    enum permissionStatus: String {
+        case allowed = "ALLOWED"
+        case disallowed = "DISALLOWED"
+        case mixed = "MIXED"
+    }
+
+    func checkPermissions(rpcName: SDLRPCFunctionName, successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        guard let sdlManager = sdlManager, sdlManagerStarted == true else {
+            return successHandler(.fail, ProxyManager.defaultNoConnectionString)
+        }
+
+        let isAllowed = sdlManager.permissionManager.isRPCNameAllowed(rpcName)
+        return successHandler(isAllowed ? .success : .fail, isAllowed ? permissionStatus.allowed.rawValue : permissionStatus.disallowed.rawValue)
+    }
+
+    func checkGroupPermissions(permissionElements: [SDLPermissionElement], successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        guard let sdlManager = sdlManager, sdlManagerStarted == true else {
+            return successHandler(.fail, ProxyManager.defaultNoConnectionString)
+        }
+
+        let groupStatus = sdlManager.permissionManager.groupStatus(ofRPCPermissions: permissionElements)
+        var returnMessage: permissionStatus
+        switch groupStatus {
+        case .allowed: returnMessage = .allowed
+        case .disallowed: returnMessage = .disallowed
+        case .mixed: returnMessage = .mixed
+        default: returnMessage = .disallowed
+        }
+        return successHandler(groupStatus == SDLPermissionGroupStatus.allowed ? .success : .fail, returnMessage.rawValue)
+    }
+
+    func checkPermissionParameter(_ parameter: String, for rpcName: SDLRPCFunctionName, successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        guard let sdlManager = sdlManager, sdlManagerStarted == true else {
+            return successHandler(.fail, ProxyManager.defaultNoConnectionString)
+        }
+
+        let isAllowed = sdlManager.permissionManager.isPermissionParameterAllowed(rpcName, parameter: parameter)
+        return successHandler(isAllowed ? .success : .fail, isAllowed ? permissionStatus.allowed.rawValue : permissionStatus.disallowed.rawValue)
+    }
+
+    func subscribePermissions(permissionElements: [SDLPermissionElement], groupType: SDLPermissionGroupType, successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+        guard let sdlManager = sdlManager, sdlManagerStarted == true else {
+            return successHandler(.fail, ProxyManager.defaultNoConnectionString)
+        }
+
+        sdlManager.permissionManager.subscribe(toRPCPermissions: permissionElements, groupType: groupType) { (individualStatues, groupStatus) in
+            let disallowedRPCs = permissionElements.filter {
+                let isRPCAllowed = individualStatues[$0.rpcName]?.isRPCAllowed ?? false
+                return !isRPCAllowed
+            }
+
+            return successHandler(groupStatus == SDLPermissionGroupStatus.allowed ? .success : .fail, disallowedRPCs.count == 0 ? permissionStatus.allowed.rawValue : "Disallowed RPCs: \(disallowedRPCs.map { $0.rpcName.rawValue.rawValue }))")
+        }
+    }
 }
