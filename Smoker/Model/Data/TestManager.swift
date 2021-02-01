@@ -10,7 +10,7 @@ import SmartDeviceLink
 import SmartDeviceLinkSwift
 
 class TestManager: ObservableObject {
-    @Published var tests: [Test]
+    @Published var tests: [Test] = []
     var currentTestType: TestType = .alert {
         didSet {
             switch currentTestType {
@@ -31,13 +31,9 @@ class TestManager: ObservableObject {
     private let screenManagerAlertTestManager = ScreenManagerAlertTestManager()
     private let mediaTestManager = MediaTestManager()
 
-    init(tests: [Test]? = nil, currentTestType: TestType = .alert) {
-        if let tests = tests {
-            self.currentTestType = currentTestType
-            self.tests = tests
-        } else {
-            self.tests = screenManagerAlertTestManager.tests
-            self.currentTestType = .screenManagerAlert
+    init(currentTestType: TestType? = nil) {
+        defer {
+            self.currentTestType = currentTestType ?? .menu
         }
 
         ProxyManager.shared.start(with: SDLAppConstants.connectionType) { [weak self] (success) in

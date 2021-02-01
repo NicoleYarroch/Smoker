@@ -18,7 +18,7 @@ struct SDLAppConstants {
     static let shortAppName = "S"
     static let fullAppId = "Smoker123456789"
     static let iPAddress = "m.sdl.tools" // "10.211.55.4"  // "m.sdl.tools"
-    static let port: UInt16 = 10179
+    static let port: UInt16 = 11152
     static let appLogoName = "AppIcon60x60"
     static let appLogo = UIImage(named: SDLAppConstants.appLogoName)!
     static let sdlLogLevel: SDLLogLevel = .verbose
