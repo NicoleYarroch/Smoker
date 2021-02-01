@@ -32,8 +32,8 @@ struct MultipleSelectionRow<RowContent: SelectableRow>: View {
         }) {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(content.header).font(.system(.title3))
-                    Text(content.subheader).font(.system(.caption))
+                    Text(content.header).font(.system(.title3)).foregroundColor(Color(UIColor.label))
+                    Text(content.subheader).font(.system(.caption)).foregroundColor(Color(UIColor.tertiaryLabel))
                 }
                 Spacer()
                 Image(systemName: content.isSelected ? "checkmark.circle.fill" : "circle").foregroundColor(content.testResultColor)

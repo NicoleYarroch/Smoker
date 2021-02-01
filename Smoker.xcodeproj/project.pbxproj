@@ -745,7 +745,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/smartdevicelink/sdl_ios";
 			requirement = {
-				branch = feature/issue_1579_alert_manager;
+				branch = master;
 				kind = branch;
 			};
 		};

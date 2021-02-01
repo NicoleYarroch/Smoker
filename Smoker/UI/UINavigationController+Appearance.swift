@@ -11,8 +11,8 @@ extension UINavigationController {
     override open func viewDidLoad() {
         super.viewDidLoad()
 
-        let defaultBackgroundColor = UIColor.black
-        let defaultTextColor = UIColor.white
+        let defaultBackgroundColor = UIColor.systemBackground
+        let defaultTextColor = UIColor.label
         let titleTextAttributes: [NSAttributedString.Key : Any] = [.foregroundColor: defaultTextColor]
         let largeTitleTextAttributes: [NSAttributedString.Key : Any] = [.foregroundColor: defaultTextColor]
 
@@ -34,5 +34,6 @@ extension UINavigationController {
         navigationBar.standardAppearance = standardAppearance
         navigationBar.compactAppearance = compactAppearance
         navigationBar.scrollEdgeAppearance = scrollEdgeAppearance
+        navigationBar.barTintColor = UIColor.systemPurple
     }
 }

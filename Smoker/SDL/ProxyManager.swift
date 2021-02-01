@@ -144,7 +144,7 @@ extension ProxyManager {
 
         var filesToUpload = files
         filesToUpload.removeAll { file -> Bool in
-            !sdlManager.fileManager.fileNeedsUpload(file)
+            !sdlManager.fileManager.hasUploadedFile(file)
         }
 
         if filesToUpload.count == 0 {
@@ -157,20 +157,20 @@ extension ProxyManager {
         }
     }
 
-    func sendScreenManagerAlert(_ request: SDLAlertView, successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
-        guard let sdlManager = sdlManager, sdlManagerStarted == true else { return successHandler(.fail, "no connection to module") }
-        sdlManager.screenManager.presentAlert(request) { error in
-            var responseError = ProxyManager.defaultNoErrorString
-            var responseSuccess = error == nil
-            if let errorUserInfo = error as NSError?, let moduleError = errorUserInfo.userInfo["error"] as? NSError {
-                responseError = moduleError.localizedDescription
-                responseSuccess = (moduleError.localizedDescription == SDLResult.aborted.rawValue.rawValue || moduleError.localizedDescription == SDLResult.success.rawValue.rawValue)
-            } else if let errorUserInfo = error as NSError?, let moduleError = errorUserInfo.userInfo[NSLocalizedDescriptionKey] as? String {
-                responseError = moduleError
-                responseSuccess = false
-            }
-
-            successHandler(responseSuccess ? .success : .fail, responseError)
-        }
-    }
+//    func sendScreenManagerAlert(_ request: SDLAlertView, successHandler: @escaping ((TestResult, _ errorString: String?) -> Void)) {
+//        guard let sdlManager = sdlManager, sdlManagerStarted == true else { return successHandler(.fail, "no connection to module") }
+//        sdlManager.screenManager.presentAlert(request) { error in
+//            var responseError = ProxyManager.defaultNoErrorString
+//            var responseSuccess = error == nil
+//            if let errorUserInfo = error as NSError?, let moduleError = errorUserInfo.userInfo["error"] as? NSError {
+//                responseError = moduleError.localizedDescription
+//                responseSuccess = (moduleError.localizedDescription == SDLResult.aborted.rawValue.rawValue || moduleError.localizedDescription == SDLResult.success.rawValue.rawValue)
+//            } else if let errorUserInfo = error as NSError?, let moduleError = errorUserInfo.userInfo[NSLocalizedDescriptionKey] as? String {
+//                responseError = moduleError
+//                responseSuccess = false
+//            }
+//
+//            successHandler(responseSuccess ? .success : .fail, responseError)
+//        }
+//    }
 }
