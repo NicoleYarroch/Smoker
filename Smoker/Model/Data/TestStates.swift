@@ -29,9 +29,9 @@ class Test: Identifiable, Hashable, SelectableRow, ObservableObject {
     @Published var testResult: TestResult {
         didSet {
             switch testResult {
-            case .untested, .testing: testResultColor = .gray
-            case .success: testResultColor = .green
-            case .fail: testResultColor = .red
+            case .untested, .testing: testResultColor = Color(UIColor.systemGray)
+            case .success: testResultColor = Color(UIColor.systemGreen)
+            case .fail: testResultColor = Color(UIColor.systemRed)
             }
         }
     }

@@ -27,7 +27,7 @@ struct TestView: View {
                 showMenuView.toggle()
             }) {
                 Image(systemName: "line.horizontal.3")
-                    .font(Font.system(.title))
+                    .font(Font.system(.title)).foregroundColor(Color(UIColor.systemYellow))
             })
         }.sheet(isPresented: $showMenuView) {
             MenuView(isPresented: $showMenuView, selectedTestType: $testManager.currentTestType)
