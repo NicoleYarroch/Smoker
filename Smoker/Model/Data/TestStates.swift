@@ -12,6 +12,7 @@ enum TestType: String, CaseIterable {
     case menu = "menu"
     case screenManagerAlert = "screen manager alert"
     case media = "media"
+    case permissionManager = "permission manager"
 }
 
 enum TestResult {
