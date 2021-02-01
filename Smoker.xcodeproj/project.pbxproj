@@ -32,6 +32,7 @@
 		887AF5FB25A39DFB00E73F64 /* SoftButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887AF5FA25A39DFB00E73F64 /* SoftButtons.swift */; };
 		88A27EDD2587C73E00D22F70 /* ScreenManagerAlertTestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A27EDC2587C73E00D22F70 /* ScreenManagerAlertTestManager.swift */; };
 		88E3C9D5258938C00046C09E /* fox_dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 88E3C9D4258938C00046C09E /* fox_dog.mp3 */; };
+		88E929CD25C854D000A26E38 /* SDLLockscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E929CC25C854D000A26E38 /* SDLLockscreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		887AF5FA25A39DFB00E73F64 /* SoftButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftButtons.swift; sourceTree = "<group>"; };
 		88A27EDC2587C73E00D22F70 /* ScreenManagerAlertTestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenManagerAlertTestManager.swift; sourceTree = "<group>"; };
 		88E3C9D4258938C00046C09E /* fox_dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fox_dog.mp3; sourceTree = "<group>"; };
+		88E929CC25C854D000A26E38 /* SDLLockscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDLLockscreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 			children = (
 				887051D3257E806800C3A5DE /* ProxyManager.swift */,
 				887051D8257E80AF00C3A5DE /* SDLAppConstants.swift */,
+				88E929CC25C854D000A26E38 /* SDLLockscreenView.swift */,
 			);
 			path = SDL;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				887051F1257E881300C3A5DE /* AppDelegate.swift in Sources */,
 				887AF5F625A39CE900E73F64 /* Audio.swift in Sources */,
 				8870521B257EF1CD00C3A5DE /* MenuView.swift in Sources */,
+				88E929CD25C854D000A26E38 /* SDLLockscreenView.swift in Sources */,
 				887051A7257E76BF00C3A5DE /* TestStates.swift in Sources */,
 				887AF5FB25A39DFB00E73F64 /* SoftButtons.swift in Sources */,
 				887051D9257E80AF00C3A5DE /* SDLAppConstants.swift in Sources */,

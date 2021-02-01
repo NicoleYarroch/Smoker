@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import SmartDeviceLink
 import SmartDeviceLinkSwift
 
@@ -63,7 +64,7 @@ private extension ProxyManager {
         lifecycleConfig.language = SDLAppConstants.language
         lifecycleConfig.languagesSupported = SDLAppConstants.supportedLanguages
 
-        return SDLConfiguration(lifecycle: lifecycleConfig, lockScreen: .enabled(), logging: logConfiguration(), streamingMedia: nil, fileManager: fileManagerConfiguration(), encryption: .default())
+        return SDLConfiguration(lifecycle: lifecycleConfig, lockScreen: customizedLockScreenConfiguration(), logging: logConfiguration(), streamingMedia: nil, fileManager: fileManagerConfiguration(), encryption: .default())
     }
 
     class func logConfiguration() -> SDLLogConfiguration {
@@ -75,7 +76,9 @@ private extension ProxyManager {
     }
 
     class func customizedLockScreenConfiguration() -> SDLLockScreenConfiguration {
-        return SDLLockScreenConfiguration.enabledConfiguration(withAppIcon: #imageLiteral(resourceName: "Smokey_Logo"), backgroundColor: UIColor.blue)
+        let swiftUIController = UIHostingController(rootView: SDLLockscreenView())
+        swiftUIController.modalPresentationStyle = .fullScreen
+        return SDLLockScreenConfiguration.enabledConfiguration(with: swiftUIController)
     }
 
     class func customLockScreenConfiguration() -> SDLLockScreenConfiguration {
