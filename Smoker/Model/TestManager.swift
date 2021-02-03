@@ -36,7 +36,7 @@ class TestManager: ObservableObject {
 
     init(currentTestType: TestType? = nil) {
         defer {
-            self.testType = currentTestType ?? .permissionManager
+            self.testType = currentTestType ?? .screenManagerAlert
         }
 
         ProxyManager.shared.start(with: SDLAppConstants.connectionType) { [weak self] (success) in
